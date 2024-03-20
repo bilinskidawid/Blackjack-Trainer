@@ -1,6 +1,7 @@
 # Blackjack-Trainer
 ## Blackjack game in a terminal with added features
-### Rules:  Dealer stands on all 17
+### Rules:
+        > Dealer stands on all 17
         > Only one split allowed
         > Blackjack pays 3 to 2 
         > Insurance pays 2 to 1 
