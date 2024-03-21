@@ -1,8 +1,10 @@
 class Hand:
-    bust = False
     cards = []
     total = 0
     soft = False
+    bust = False
+    split = False
+    stake = 0
 
     def add_card(self, card: tuple) -> None:
         self.cards.append(card)
@@ -22,6 +24,10 @@ class Hand:
             self.soft = False
         elif self.total > 21:
             self.bust = True
+    
+    def add_stake(self, stake: int):
+        self.stake = stake
+
     def show_cards(self) -> list[tuple]:
         return self.cards
         
