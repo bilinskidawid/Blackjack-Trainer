@@ -88,10 +88,12 @@ while(not shoe.dead):
     play_hand(False, player_hand)
     if player_hand.bust:
         print("Dealer had: ", dealer_hand.show_cards())
+        balance -= player_hand.stake
     else:
         play_hand(True, dealer_hand)
         if dealer_hand.bust:
             print("Dealer busts!")
+            balance += player_hand.stake
         elif player_hand.total == dealer_hand.total:
             print("Push")
         elif player_hand.total > dealer_hand.total:
