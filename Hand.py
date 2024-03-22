@@ -6,6 +6,11 @@ class Hand:
     split = False
     stake = 0
 
+    def __init__(self, stake: int):
+        self.cards = []
+        self.stake = stake
+
+
     def add_card(self, card: tuple) -> None:
         self.cards.append(card)
         if card['rank'] in ['J', 'Q', 'K']:
@@ -28,6 +33,6 @@ class Hand:
     def add_stake(self, stake: int):
         self.stake = stake
 
-    def show_cards(self) -> list[tuple]:
-        return self.cards
+    def show_cards(self) -> list[str]:
+        return [card['rank'] for card in self.cards] 
         

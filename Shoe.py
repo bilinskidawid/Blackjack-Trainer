@@ -7,6 +7,7 @@ class Shoe:
     running_count = 0
     true_count = 0
     num_decks = 0
+    dead = False
 
 
     def __init__(self, num_decks = 4):
@@ -23,7 +24,6 @@ class Shoe:
         random.shuffle(cards)
         cut_card = {'rank': 'cut', 'suit': 'cut'}
         randomindex = random.randint(35*self.num_decks, 45*self.num_decks)
-        print("cut card in index: ", randomindex)
         cards.insert(randomindex, cut_card)
 
         return cards
@@ -31,19 +31,16 @@ class Shoe:
     def draw_card(self):
         if len(self.cards) == 0:
             raise ValueError("No cards left in the shoe.")
-        self.cards_left -= 1
         drawn_card = self.cards.pop()
+        if drawn_card['rank'] == 'cut':
+            self.dead = True
+            drawn_card = self.cards.pop()
         if drawn_card['rank'] in ['2', '3', '4', '5', '6']:
             self.running_count += 1
         elif drawn_card['rank'] in ['10', 'J', 'Q', 'K', 'A']:
             self.running_count -= 1
+        self.cards_left -= 1
         self.true_count = int(self.running_count / round(self.cards_left / 52))
 
         return drawn_card
-
-shoe = Shoe()
-for i in range (0,150):
-    shoe.draw_card()
-    print("Running count: ", shoe.running_count)
-    print("True count: ", shoe.true_count)
 
