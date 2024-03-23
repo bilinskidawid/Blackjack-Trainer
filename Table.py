@@ -23,6 +23,8 @@ def play_hand(dealer: bool, hand:Hand):
     if hand.total > 21:
         print("Player BUST: ", hand.show_cards(), " : ", hand.total)
         return
+    if hand.total == 21:
+        return
 
     print("Player : ", hand.show_cards(), " : ", hand.total)
     options = ["Hit(h)", "Stand(s)"]
@@ -54,6 +56,11 @@ def play_hand(dealer: bool, hand:Hand):
     if move == "sp":
         print("not fuckin done yet")
 
+def show_dealer(hand):
+    print(f'Dealer has: {hand.show_cards()} : {hand.total}')
+
+def show_player(hand):
+    print(f'Player has: {hand.show_cards()} : {hand.total}')
 
 
 while(not shoe.dead):
@@ -74,12 +81,13 @@ while(not shoe.dead):
     player_hand.add_card(shoe.draw_card())
     dealer_hand.add_card(shoe.draw_card())
     print("Dealer has: ", dealer_hand.cards[0]['rank'])
-    print("Player has: ", player_hand.show_cards())
     
     if player_hand.total == 21:
+        show_player(player_hand) 
         print("Blackjack! Now let's see what the dealer has")
+        show_dealer(dealer_hand)
         if dealer_hand.total == 21:
-            print("You got Greg'd, dealer has 21!")
+            print("You got Greg'd")
             continue
         else:
             print("Well done!")
@@ -87,7 +95,7 @@ while(not shoe.dead):
             continue
     play_hand(False, player_hand)
     if player_hand.bust:
-        print("Dealer had: ", dealer_hand.show_cards())
+        show_dealer(dealer_hand)
         balance -= player_hand.stake
     else:
         play_hand(True, dealer_hand)

@@ -19,7 +19,7 @@ class Shoe:
     def create_deck(self):
         suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
         ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-        deck = [{'rank': rank, 'suit': suit} for suit in suits for rank in ranks]
+        deck = [{'rank': rank, 'suit': suit, 'image': f"{rank}o{suit[0]}.png"} for suit in suits for rank in ranks]
         cards = deck * self.num_decks
         random.shuffle(cards)
         cut_card = {'rank': 'cut', 'suit': 'cut'}
