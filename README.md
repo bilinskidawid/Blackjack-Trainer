@@ -11,4 +11,4 @@
         > Basic strategy can be toggled to display per play
         > A basic strategy test can be toggled which just plays one hand and displays the book play
 
-### Run "python3 Table.py"
+### Run "python3 Table.py" for a basic terminal game, gui not completed
