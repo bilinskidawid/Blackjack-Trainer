@@ -19,15 +19,15 @@ class Shoe:
     def create_deck(self):
         suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
         ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-        deck = [{'rank': rank, 'suit': suit, 'image': f"{rank}o{suit[0]}.png"} for suit in suits for rank in ranks]
+        deck = [{'rank': rank, 'suit': suit, 'image': f"{rank}o{suit[0]}"} for suit in suits for rank in ranks]
         cards = deck * self.num_decks
         random.shuffle(cards)
-        cut_card = {'rank': 'cut', 'suit': 'cut'}
+        cut_card = {'rank': 'cut', 'suit': 'cut', 'image': 'cut'}
         randomindex = random.randint(35*self.num_decks, 45*self.num_decks)
         cards.insert(randomindex, cut_card)
 
         return cards
-#draw card and update counts
+    #draw card and update counts
     def draw_card(self):
         if len(self.cards) == 0:
             raise ValueError("No cards left in the shoe.")
