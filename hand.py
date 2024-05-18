@@ -1,4 +1,3 @@
-
 class Hand:
     cards = []
     total = 0
@@ -39,6 +38,7 @@ class Hand:
     
     def get_total(self) -> tuple:
         return self.total, self.soft
+
     def show_options(self) -> list[str] | None:
         options = []
         if self.bust:
@@ -46,5 +46,7 @@ class Hand:
         options.append("s")
         options.append("h")
         if len(cards) == 2:
-            options.append("d")    
-        
+            options.append("d")
+
+    def get_cards(self) -> list[tuple]:
+        return self.cards
